@@ -1,7 +1,7 @@
 [project]
 name = "flet-permission-handler"
 version = "0.2.0"
-description = "PermissionHandler control for Flet"
+description = "A Flet extension that simplifies working with permissions in your app."
 readme = "README.md"
 authors = [
     { name = "Flet contributors", email = "hello@flet.dev" }
@@ -9,7 +9,7 @@ authors = [
 license = "Apache-2.0"
 requires-python = ">=3.10"
 dependencies = [
-    "flet >=0.70.0",
+    "flet >=0.70.0.dev0",
 ]
 
 [project.urls]
