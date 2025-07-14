@@ -93,7 +93,10 @@ validation:
 
 watch:
   - docs
-  - src
+  - src/flet_permission_handler
+  - CHANGELOG.md
+  - LICENSE
+  - README.md
 
 # Plugins
 plugins:
@@ -124,6 +127,7 @@ plugins:
             show_labels: false
             show_if_no_docstring: true
             docstring_section_style: spacy
+            separate_signature: true
             inherited_members: true
             preload_modules: [ flet ]
             filters:

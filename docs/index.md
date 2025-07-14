@@ -59,5 +59,5 @@ Ensure that your app has the necessary [permissions declared](https://flet.dev/d
 --8<-- "examples/permission_handler_example/src/main.py"
 ``` 
 
-1. The [`PermissionHandler`][(p).] instance must be added to the
-   [`Page.services`](https://flet.dev/docs/controls/page#services) list to work properly.
+1. The [`PermissionHandler`][flet_permission_handler.permission_handler.PermissionHandler] instance must be added to the
+   [`Page.services`][flet.Page.services] list to work properly.
