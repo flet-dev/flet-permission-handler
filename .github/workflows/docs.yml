@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev
+      - fix-docs
     paths:
       - 'LICENSE'
       - 'CHANGELOG.md'
