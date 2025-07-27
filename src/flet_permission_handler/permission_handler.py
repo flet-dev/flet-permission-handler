@@ -12,10 +12,12 @@ class PermissionHandler(ft.Service):
     """
     Manages permissions for the application.
 
-    This control is non-visual and should be added to `Page.services` list.
+    This control is non-visual and should be added
+    to [`Page.services`][flet.Page.services] list.
 
-    Note:
+    Danger: Platform support
         Currently only supported on Android, iOS, Windows, and Web platforms.
+
     Raises:
         FletUnsupportedPlatformException: If the platform is not supported.
     """
@@ -34,7 +36,8 @@ class PermissionHandler(ft.Service):
             ]
         ):
             raise ft.FletUnsupportedPlatformException(
-                "PermissionHandler is currently only supported on Android, iOS, Windows, and Web platforms."
+                "PermissionHandler is currently only supported on Android, iOS, "
+                "Windows, and Web platforms."
             )
 
     async def get_status_async(
@@ -46,13 +49,17 @@ class PermissionHandler(ft.Service):
         Args:
             permission: The `Permission` to check the status for.
             timeout: The maximum amount of time (in seconds) to wait for a response.
+
         Returns:
             A `PermissionStatus` if the status is known, otherwise `None`.
+
         Raises:
             TimeoutError: If the request times out.
         """
         status = await self._invoke_method_async(
-            "get_status", {"permission": permission}, timeout=timeout
+            method_name="get_status",
+            arguments={"permission": permission},
+            timeout=timeout,
         )
         return PermissionStatus(status) if status is not None else None
 
@@ -60,18 +67,24 @@ class PermissionHandler(ft.Service):
         self, permission: Permission, timeout: int = 60
     ) -> Optional[PermissionStatus]:
         """
-        Request the user for access to the `permission` if access hasn't already been granted access before.
+        Request the user for access to the `permission` if access hasn't already been
+        granted access before.
 
         Args:
             permission: The `Permission` to request.
             timeout: The maximum amount of time (in seconds) to wait for a response.
+
         Returns:
-            The new `PermissionStatus` after the request, or `None` if the request was not successful.
+            The new `PermissionStatus` after the request, or `None` if the request
+                was not successful.
+
         Raises:
             TimeoutError: If the request times out.
         """
         r = await self._invoke_method_async(
-            "request", {"permission": permission}, timeout=timeout
+            method_name="request",
+            arguments={"permission": permission},
+            timeout=timeout,
         )
         return PermissionStatus(r) if r is not None else None
 
@@ -81,9 +94,14 @@ class PermissionHandler(ft.Service):
 
         Args:
             timeout: The maximum amount of time (in seconds) to wait for a response.
+
         Returns:
             `True` if the app settings page could be opened, otherwise `False`.
+
         Raises:
             TimeoutError: If the request times out.
         """
-        return await self._invoke_method_async("open_app_settings", timeout=timeout)
+        return await self._invoke_method_async(
+            method_name="open_app_settings",
+            timeout=timeout,
+        )
