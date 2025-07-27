@@ -1,8 +1,8 @@
 from enum import Enum
 
 __all__ = [
-    "PermissionStatus",
     "Permission",
+    "PermissionStatus",
 ]
 
 
@@ -21,22 +21,23 @@ class PermissionStatus(Enum):
 
     PERMANENTLY_DENIED = "permanentlyDenied"
     """
-    Permission to the requested feature is permanently denied, 
-    the permission dialog will not be shown when requesting this permission. 
+    Permission to the requested feature is permanently denied,
+    the permission dialog will not be shown when requesting this permission.
     The user may still change the permission status in the settings.
 
     Note:
-        - On Android: 
-            - Android 11+ (API 30+): whether the user denied the permission for a second time.
-            
-            - Below Android 11 (API 30): whether the user denied access 
+        - On Android:
+            - Android 11+ (API 30+): whether the user denied the permission
+            for a second time.
+            - Below Android 11 (API 30): whether the user denied access
             to the requested feature and selected to never again show a request.
         - On iOS: If the user has denied access to the requested feature.
     """
 
     LIMITED = "limited"
     """
-    The user has authorized this application for limited access. So far this is only relevant for the Photo Library picker.
+    The user has authorized this application for limited access.
+    So far this is only relevant for the Photo Library picker.
 
     Note:
         Only supported on iOS (iOS14+) and Android (Android 14+).
@@ -44,7 +45,8 @@ class PermissionStatus(Enum):
 
     PROVISIONAL = "provisional"
     """
-    The application is provisionally authorized to post non-interruptive user notifications.
+    The application is provisionally authorized to post non-interruptive
+    user notifications.
 
     Note:
         Only supported on iOS (iOS 12+).
@@ -52,14 +54,17 @@ class PermissionStatus(Enum):
 
     RESTRICTED = "restricted"
     """
-    The OS denied access to the requested feature. The user cannot change this app's status, possibly due to active restrictions such as parental controls being in place.
+    The OS denied access to the requested feature. The user cannot change
+    this app's status, possibly due to active restrictions such as parental
+    controls being in place.
 
     Note:
         Only supported on iOS.
     """
 
 
-# todo: show how pyproject config for each could look like for each permission (what exactly is needed in manifest, plist, etc.)
+# todo: show how pyproject config for each could look like for each permission
+#  (what exactly is needed in manifest, plist, etc.)
 
 
 class Permission(Enum):
@@ -68,7 +73,7 @@ class Permission(Enum):
     ACCESS_MEDIA_LOCATION = "accessMediaLocation"
     """
     Permission for accessing the device's media library.
-    
+
     Allows an application to access any geographic locations persisted in the
     user's shared collection.
 
@@ -79,10 +84,10 @@ class Permission(Enum):
     ACCESS_NOTIFICATION_POLICY = "accessNotificationPolicy"
     """
     Permission for accessing the device's notification policy.
-    
+
     Allows the user to access the notification policy of the phone.
     Example: Allows app to turn on and off do-not-disturb.
-    
+
     Note:
         Only supported on Android Marshmallow+ (API 23+) only.
     """
@@ -101,7 +106,7 @@ class Permission(Enum):
     Allows user to accept that your app collects data about end users and
     shares it with other companies for purposes of tracking across apps and
     websites.
-    
+
     Note:
         Only supported on iOS only.
     """
@@ -116,7 +121,7 @@ class Permission(Enum):
     AUDIO = "audio"
     """
     Permission for accessing the device's audio files from external storage.
-    
+
     Note:
         Only supported on Android 13+ (API 33+) only.
     """
@@ -124,7 +129,7 @@ class Permission(Enum):
     BACKGROUND_REFRESH = "backgroundRefresh"
     """
     Permission for reading the current background refresh status.
-    
+
     Note:
         Only supported on iOS only.
     """
@@ -134,7 +139,7 @@ class Permission(Enum):
     Permission for accessing the device's bluetooth adapter state.
 
     Depending on the platform and version, the requirements are slightly different:
-    
+
     Info:
         - Android: always allowed.
         - iOS:
@@ -155,7 +160,7 @@ class Permission(Enum):
     """
     Permission for connecting to Bluetooth devices.
     Allows the user to connect with already paired Bluetooth devices.
-    
+
     Note:
         Only supported on Android 12+ (API 31+) only.
     """
@@ -177,7 +182,8 @@ class Permission(Enum):
     """
     Permission for writing to the device's calendar.
 
-    On iOS 16 and lower, this permission is identical to `Permission.CALENDAR_FULL_ACCESS`.
+    On iOS 16 and lower, this permission is identical to
+    [`CALENDAR_FULL_ACCESS`][..].
     """
 
     CAMERA = "camera"
@@ -202,7 +208,7 @@ class Permission(Enum):
     """
     Permission for sending critical alerts.
     Allow for sending notifications that override the ringer.
-    
+
     Note:
         Only supported on iOS only.
     """
@@ -210,7 +216,7 @@ class Permission(Enum):
     IGNORE_BATTERY_OPTIMIZATIONS = "ignoreBatteryOptimizations"
     """
     Permission for accessing ignore battery optimizations.
-    
+
     Note:
         Only supported on Android only.
     """
@@ -232,8 +238,9 @@ class Permission(Enum):
 
     LOCATION_WHEN_IN_USE = "locationWhenInUse"
     """
-    Permission for accessing the device's location when the app is running in the foreground.
-    
+    Permission for accessing the device's location when the app is
+    running in the foreground.
+
     Info:
         - Android: Fine and Coarse Location
         - iOS: CoreLocation - WhenInUse
@@ -243,21 +250,24 @@ class Permission(Enum):
     """
     Permission for accessing the device's external storage.
     Allows an application a broad access to external storage in scoped storage.
-    
-    You should request this permission only when your app cannot 
+
+    You should request this permission only when your app cannot
     effectively make use of the more privacy-friendly APIs.
-    For more information: https://developer.android.com/training/data-storage/manage-all-files
-    
+    For more information:
+    https://developer.android.com/training/data-storage/manage-all-files
+
     Info:
         When the privacy-friendly APIs (i.e. [Storage Access Framework](https://developer.android.com/guide/topics/providers/document-provider)
         or the [MediaStore](https://developer.android.com/training/data-storage/shared/media) APIs)
         is all your app needs, the [PermissionGroup.storage] are the only
         permissions you need to request.
-        
-        If the usage of this permission is needed, you have to fill out 
-        the Permission Declaration Form upon submitting your app to the Google Play Store. 
-        More details: https://support.google.com/googleplay/android-developer/answer/9214102#zippy=
-    
+
+        If the usage of this permission is needed, you have to fill out
+        the Permission Declaration Form upon submitting your app to the
+        Google Play Store.
+        More details:
+        https://support.google.com/googleplay/android-developer/answer/9214102#zippy=
+
     Note:
         Only supported on Android 11+ (API 30+) only.
     """
@@ -265,7 +275,7 @@ class Permission(Enum):
     MEDIA_LIBRARY = "mediaLibrary"
     """
     Permission for accessing the device's media library.
-    
+
     Note:
         Only supported on iOS 9.3+ only
     """
@@ -291,7 +301,7 @@ class Permission(Enum):
     PHONE = "phone"
     """
     Permission for accessing the device's phone state.
-    
+
     Note:
         Only supported on Android only.
     """
@@ -300,7 +310,7 @@ class Permission(Enum):
     """
     Permission for accessing (read & write) the device's photos.
 
-    If you only want to add photos, you can use 
+    If you only want to add photos, you can use
     the `PHOTOS_ADD_ONLY` permission instead (iOS only).
     """
 
@@ -309,7 +319,7 @@ class Permission(Enum):
     Permission for adding photos to the device's photo library (iOS only).
 
     If you want to read them as well, use the `Permission.PHOTOS` permission instead.
-    
+
     Info:
         iOS: Photos (14+ read & write access level)
     """
@@ -317,7 +327,7 @@ class Permission(Enum):
     REMINDERS = "reminders"
     """
     Permission for accessing the device's reminders.
-    
+
     Note:
         Only supported on iOS only.
     """
@@ -325,7 +335,7 @@ class Permission(Enum):
     REQUEST_INSTALL_PACKAGES = "requestInstallPackages"
     """
     Permission for requesting installing packages.
-    
+
     Note:
         Only supported on Android Marshmallow+ (API 23+) only.
     """
@@ -341,7 +351,7 @@ class Permission(Enum):
     SENSORS = "sensors"
     """
     Permission for accessing the device's sensors.
-    
+
     Info:
         - Android: Body Sensors
         - iOS: CoreMotion
@@ -365,8 +375,10 @@ class Permission(Enum):
     Permission for accessing speech recognition.
 
     Info:
-        - Android: Requests access to microphone (identical to requesting `Permission.MICROPHONE`).
-        - iOS: Requests speech access (different from requesting `Permission.MICROPHONE`).
+        - Android: Requests access to microphone
+            (identical to requesting [`MICROPHONE`][..]).
+        - iOS: Requests speech access (different from requesting
+            [`MICROPHONE`][..]).
     """
 
     STORAGE = "storage"
@@ -374,14 +386,16 @@ class Permission(Enum):
     Permission for accessing external storage.
 
     Depending on the platform and version, the requirements are slightly different:
-    
+
     Info:
         - Android:
             - On Android 13 (API 33) and above, this permission is deprecated and
             always returns `PermissionStatus.denied`. Instead use `Permission.PHOTOS`,
-            `Permission.VIDEO`, `Permission.AUDIO` or `Permission.MANAGE_EXTERNAL_STORAGE`. 
-            For more information see [this](https://pub.dev/packages/permission_handler#faq).
-            
+            `Permission.VIDEO`, `Permission.AUDIO` or
+            `Permission.MANAGE_EXTERNAL_STORAGE`.
+            For more information see
+            [this](https://pub.dev/packages/permission_handler#faq).
+
             - Below Android 13 (API 33), the `READ_EXTERNAL_STORAGE` and
             `WRITE_EXTERNAL_STORAGE` permissions are requested (depending on the
             definitions in the AndroidManifest.xml) file.
@@ -392,7 +406,7 @@ class Permission(Enum):
     """
     Permission for creating system alert window.
     Allows an app to create windows shown on top of all other apps.
-    
+
     Note:
         Only supported on Android only.
     """
@@ -405,7 +419,7 @@ class Permission(Enum):
     VIDEOS = "videos"
     """
     Permission for accessing the device's video files from external storage.
-    
+
     Note:
         Only supported on Android 13+ (API 33+) only.
     """
