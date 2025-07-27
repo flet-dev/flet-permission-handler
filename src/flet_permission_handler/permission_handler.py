@@ -76,7 +76,7 @@ class PermissionHandler(ft.Service):
 
         Returns:
             The new `PermissionStatus` after the request, or `None` if the request
-            was not successful.
+                was not successful.
 
         Raises:
             TimeoutError: If the request times out.
