@@ -10,16 +10,16 @@ def main(page: ft.Page):
         page.show_dialog(ft.SnackBar(ft.Text(message)))
 
     async def get_permission_status(e: ft.Event[ft.OutlinedButton]):
-        status = await p.get_status_async(fph.Permission.MICROPHONE)
+        status = await p.get_status(fph.Permission.MICROPHONE)
         show_snackbar(f"Microphone permission status: {status.name}")
 
     async def request_permission(e: ft.Event[ft.OutlinedButton]):
-        status = await p.request_async(fph.Permission.MICROPHONE)
+        status = await p.request(fph.Permission.MICROPHONE)
         show_snackbar(f"Requested microphone permission: {status.name}")
 
     async def open_app_settings(e: ft.Event[ft.OutlinedButton]):
         show_snackbar("Opening app settings...")
-        await p.open_app_settings_async()
+        await p.open_app_settings()
 
     p = fph.PermissionHandler()
     page.services.append(p)  # (1)!
