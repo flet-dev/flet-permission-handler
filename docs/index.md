@@ -51,13 +51,12 @@ To install the `flet-permission-handler` package and add it to your project depe
 
 ### Declaring Permissions
 
-Ensure that your app has the necessary [permissions declared](https://flet.dev/docs/publish#permissions).
+On mobile platforms, while the permissions are being requested during runtime,
+you'll still need to tell the respective OS which permissions your app
+might potentially use.
 
-## Example
+See [this guide](https://flet.dev/docs/publish#permissions) on how to declare permissions.
 
-```python title="main.py"
---8<-- "examples/permission_handler_example/src/main.py"
-``` 
+### Examples
 
-1. The [`PermissionHandler`][flet_permission_handler.permission_handler.PermissionHandler] instance must be added to the
-   [`Page.services`][flet.Page.services] list to work properly.
+See [these](permission_handler.md#examples).

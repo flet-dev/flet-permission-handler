@@ -2,7 +2,7 @@ from typing import Optional
 
 import flet as ft
 
-from .types import Permission, PermissionStatus
+from flet_permission_handler.types import Permission, PermissionStatus
 
 __all__ = ["PermissionHandler"]
 
