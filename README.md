@@ -30,7 +30,9 @@ This package supports the following platforms:
 | Android  |     ✅     |
 | Web      |     ✅     |
 
-## Installation
+## Usage
+
+### Installation
 
 To install the `flet-permission-handler` package and add it to your project dependencies:
 
@@ -50,6 +52,6 @@ To install the `flet-permission-handler` package and add it to your project depe
     poetry add flet-permission-handler
     ```
 
-## Examples
+### Examples
 
-For examples, see [this](./examples)
+For examples, see [these](./examples).

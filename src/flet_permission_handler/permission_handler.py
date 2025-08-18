@@ -2,7 +2,7 @@ from typing import Optional
 
 import flet as ft
 
-from .types import Permission, PermissionStatus
+from flet_permission_handler.types import Permission, PermissionStatus
 
 __all__ = ["PermissionHandler"]
 
@@ -40,7 +40,7 @@ class PermissionHandler(ft.Service):
                 "Windows, and Web platforms."
             )
 
-    async def get_status_async(
+    async def get_status(
         self, permission: Permission, timeout: int = 10
     ) -> Optional[PermissionStatus]:
         """
@@ -56,14 +56,14 @@ class PermissionHandler(ft.Service):
         Raises:
             TimeoutError: If the request times out.
         """
-        status = await self._invoke_method_async(
+        status = await self._invoke_method(
             method_name="get_status",
             arguments={"permission": permission},
             timeout=timeout,
         )
         return PermissionStatus(status) if status is not None else None
 
-    async def request_async(
+    async def request(
         self, permission: Permission, timeout: int = 60
     ) -> Optional[PermissionStatus]:
         """
@@ -81,14 +81,14 @@ class PermissionHandler(ft.Service):
         Raises:
             TimeoutError: If the request times out.
         """
-        r = await self._invoke_method_async(
+        r = await self._invoke_method(
             method_name="request",
             arguments={"permission": permission},
             timeout=timeout,
         )
         return PermissionStatus(r) if r is not None else None
 
-    async def open_app_settings_async(self, timeout: int = 10) -> bool:
+    async def open_app_settings(self, timeout: int = 10) -> bool:
         """
         Opens the app settings page.
 
@@ -101,7 +101,7 @@ class PermissionHandler(ft.Service):
         Raises:
             TimeoutError: If the request times out.
         """
-        return await self._invoke_method_async(
+        return await self._invoke_method(
             method_name="open_app_settings",
             timeout=timeout,
         )
